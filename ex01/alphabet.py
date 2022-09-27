@@ -5,6 +5,7 @@ num_alph = 26
 num_all_chars = 10
 num_abs_chars = 2
 num_try = 2
+st = datetime.datetime.now()
 
 def shutudai(alph):
     all_chars = random.sample(alph, num_all_chars)
@@ -41,8 +42,11 @@ def kaito(seikai):
                 seikai.remove(c)
         else:
             print("欠損文字を含めてパーフェクト正解です")
+            ed = datetime.datetime.now()
+            print(f"クリアタイムは{(ed-st).seconds}秒")
             return True
     return False
+
             
 
 if __name__ == "__main__":
