@@ -10,6 +10,12 @@ def button_click(event):
     #tkm.showinfo("", f"{txt}のボタンがクリックされました")
     entry.insert(tk.END, txt)
 
+def click_equal(event):
+    eqn = entry.get()
+    res = eval(eqn)
+    entry.delete(0, tk.END)
+    entry.insert(tk.END, res)
+
 
 root = tk.Tk()
 root.title("電卓")
@@ -35,9 +41,9 @@ for i , num in enumerate(numbers + operators,1):
         r+=1
         c = 0
 
-#btnp = tk.Button(root, text="+", font=("Times New Roman", 30), width=4, height=2)
-#btnp.grid(row=4, column=1)
-#btn.bind("<1>", button_click)
+btne = tk.Button(root, text="=", font=("Times New Roman", 30), width=4, height=2)
+btne.grid(row=4, column=2)
+btne.bind("<1>", click_equal)
 
 
 
