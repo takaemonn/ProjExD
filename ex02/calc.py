@@ -16,10 +16,36 @@ def click_equal(event):
     entry.delete(0, tk.END)
     entry.insert(tk.END, res)
 
+def click_ac(event):
+    entry.delete(0, tk.END)
+
+def click_dl(event):
+    deltxt = entry.get()
+    preend = len(deltxt)-1
+    entry.delete(preend, tk.END)
+
+def click_pi(event):
+    button = event.widget
+    txt = button["text"]
+    entry.insert(tk.END, txt)
+
+def click_fac(event):
+    num = int(entry.get())
+    val = 1
+    for i in range(num, 1, -1): 
+        val *= i
+    entry.delete(0, tk.END)
+    entry.insert(tk.END, val)
+
+    
+
+
+
+
 
 root = tk.Tk()
 root.title("電卓")
-root.geometry("300x560")
+root.geometry("420x700")
 
 
 
@@ -27,11 +53,32 @@ root.geometry("300x560")
 entry = tk.Entry(root, justify="right", width=10, font=("Times New Roman", 40))
 entry.grid(row=0, column=0, columnspan=3)
 
+btnac = tk.Button(root, text="AC", font=("", 30), width=4, height=2)
+btnac.grid(row=1, column=0)
+btnac.bind("<1>", click_ac)
 
-r, c = 1, 0
+btndl = tk.Button(root, text="←", font=("", 30), width=4, height=2)
+btndl.grid(row=1, column=1)
+btndl.bind("<1>", click_dl)
+
+btnfac = tk.Button(root, text="!", font=("", 30), width=4, height=2)
+btnfac.grid(row=1, column=2)
+btnfac.bind("<1>", click_fac)
+
+
+#btnpi = tk.Button(root, text="π", font=("", 30), width=4, height=2)
+#btnpi.grid(row=1, column=2)
+#btnpi.bind("<1>", click_pi)
+
+#btnsq = tk.Button(root, text="^", font=("", 30), width=4, height=2)
+#btnsq.grid(row=1, column=2)
+#btndl.bind("<1>", click_sq)
+
+
+
+r, c = 2, 0
 numbers = list(range(9,-1,-1))
-operators = ["+"]
-for i , num in enumerate(numbers + operators,1):
+for i , num in enumerate(numbers,1):
     btn = tk.Button(root, text=f"{num}", font=("Times New Roman", 30), width =4, height=2)
     btn.grid(row=r, column=c)
     btn.bind("<1>", button_click)
@@ -41,9 +88,26 @@ for i , num in enumerate(numbers + operators,1):
         r+=1
         c = 0
 
+
+btnp = tk.Button(root, text="+", font=("Times New Roman", 30), width=9, height=2)
+btnp.grid(row=5, column=1, columnspan=2)
+btnp.bind("<1>", button_click)
+
+ro = 2
+operators = ["-","*","/"]
+for i , num in enumerate(operators, 1):
+    btn = tk.Button(root, text=f"{num}", font=("Times New Roman", 30), width =4, height=2)
+    btn.grid(row=ro, column=3)
+    btn.bind("<1>", button_click)
+
+    ro+=1
+    
+
+
 btne = tk.Button(root, text="=", font=("Times New Roman", 30), width=4, height=2)
-btne.grid(row=4, column=2)
+btne.grid(row=5, column=3)
 btne.bind("<1>", click_equal)
+#btne.bind("<Key-Return>", click_equal)
 
 
 
