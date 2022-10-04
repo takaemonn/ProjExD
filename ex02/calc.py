@@ -42,10 +42,6 @@ def click_sig(event):       #総和計算
 
     
 
-
-
-
-
 root = tk.Tk()
 root.title("電卓")
 root.geometry("420x700")
