@@ -32,7 +32,7 @@ def click_fac(event):       #階乗計算
     entry.delete(0, tk.END)
     entry.insert(tk.END, val)
 
-def click_sig(event):       #総和計算
+def click_sigma(event):       #総和計算
     num = int(entry.get())
     val = 1
     for i in range(num, 1, -1): 
@@ -65,9 +65,9 @@ btnfac.grid(row=1, column=2)
 btnfac.bind("<1>", click_fac)
 
 
-btnsig = tk.Button(root, text="Σ", font=("", 30), width=4, height=2)
-btnsig.grid(row=1, column=3)
-btnsig.bind("<1>", click_sig)
+btnsigma = tk.Button(root, text="Σ", font=("", 30), width=4, height=2)
+btnsigma.grid(row=1, column=3)
+btnsigma.bind("<1>", click_sigma)
 
 
 r, c = 2, 0
