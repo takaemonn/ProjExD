@@ -4,7 +4,7 @@ import tkinter as tk
 import tkinter.messagebox as tkm
 from turtle import right
 
-def button_click(event):
+def button_click(event): 
     button = event.widget
     txt = button["text"]
     #tkm.showinfo("", f"{txt}のボタンがクリックされました")
@@ -16,24 +16,27 @@ def click_equal(event):
     entry.delete(0, tk.END)
     entry.insert(tk.END, res)
 
-def click_ac(event):
+def click_ac(event):        #オールクリア
     entry.delete(0, tk.END)
 
-def click_dl(event):
+def click_dl(event):        #1文字消去
     deltxt = entry.get()
     preend = len(deltxt)-1
     entry.delete(preend, tk.END)
 
-def click_pi(event):
-    button = event.widget
-    txt = button["text"]
-    entry.insert(tk.END, txt)
-
-def click_fac(event):
+def click_fac(event):       #階乗計算
     num = int(entry.get())
     val = 1
     for i in range(num, 1, -1): 
         val *= i
+    entry.delete(0, tk.END)
+    entry.insert(tk.END, val)
+
+def click_sig(event):       #総和計算
+    num = int(entry.get())
+    val = 1
+    for i in range(num, 1, -1): 
+        val += i
     entry.delete(0, tk.END)
     entry.insert(tk.END, val)
 
@@ -47,33 +50,28 @@ root = tk.Tk()
 root.title("電卓")
 root.geometry("420x700")
 
-
-
-
 entry = tk.Entry(root, justify="right", width=10, font=("Times New Roman", 40))
 entry.grid(row=0, column=0, columnspan=3)
+
 
 btnac = tk.Button(root, text="AC", font=("", 30), width=4, height=2)
 btnac.grid(row=1, column=0)
 btnac.bind("<1>", click_ac)
 
+
 btndl = tk.Button(root, text="←", font=("", 30), width=4, height=2)
 btndl.grid(row=1, column=1)
 btndl.bind("<1>", click_dl)
+
 
 btnfac = tk.Button(root, text="!", font=("", 30), width=4, height=2)
 btnfac.grid(row=1, column=2)
 btnfac.bind("<1>", click_fac)
 
 
-#btnpi = tk.Button(root, text="π", font=("", 30), width=4, height=2)
-#btnpi.grid(row=1, column=2)
-#btnpi.bind("<1>", click_pi)
-
-#btnsq = tk.Button(root, text="^", font=("", 30), width=4, height=2)
-#btnsq.grid(row=1, column=2)
-#btndl.bind("<1>", click_sq)
-
+btnsig = tk.Button(root, text="Σ", font=("", 30), width=4, height=2)
+btnsig.grid(row=1, column=3)
+btnsig.bind("<1>", click_sig)
 
 
 r, c = 2, 0
@@ -82,7 +80,6 @@ for i , num in enumerate(numbers,1):
     btn = tk.Button(root, text=f"{num}", font=("Times New Roman", 30), width =4, height=2)
     btn.grid(row=r, column=c)
     btn.bind("<1>", button_click)
-
     c+=1
     if i%3 ==0:
         r+=1
@@ -99,7 +96,6 @@ for i , num in enumerate(operators, 1):
     btn = tk.Button(root, text=f"{num}", font=("Times New Roman", 30), width =4, height=2)
     btn.grid(row=ro, column=3)
     btn.bind("<1>", button_click)
-
     ro+=1
     
 
@@ -108,7 +104,5 @@ btne = tk.Button(root, text="=", font=("Times New Roman", 30), width=4, height=2
 btne.grid(row=5, column=3)
 btne.bind("<1>", click_equal)
 #btne.bind("<Key-Return>", click_equal)
-
-
 
 root.mainloop()
