@@ -48,16 +48,11 @@ def main_proc():
     root.after(100, main_proc)
 
 
-
-
-
 def count_down():
     global tmr
     tmr -= 1
     label["text"] = tmr
     root.after(1000, count_down)
-
-
 
 
 if __name__ == "__main__":
@@ -81,7 +76,6 @@ if __name__ == "__main__":
 
     key = ""
 
-    
     root.bind("<KeyPress>", key_down)
     root.bind("<KeyRelease>", key_up)
 
