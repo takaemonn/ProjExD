@@ -21,26 +21,17 @@ def main_proc():
     global mx, my
     global cx, cy
 
-    if key == "Up":
+    if key == "Up" and maze_list[my-1][mx] == 0:
             my -= 1
-    if key == "Down":
+    if key == "Down" and maze_list[my+1][mx] == 0:
             my += 1
-    if key == "Left":
+    if key == "Left" and maze_list[my][mx-1] == 0:
             mx -= 1
-    if key == "Right":
+    if key == "Right" and maze_list[my][mx+1] == 0:
             mx += 1
     if maze_list[my][mx] == 0:
         cx, cy = mx*100+50, my*100+50
-    else:
-        if key == "Up":
-                my += 1
-        if key == "Down":
-                my -= 1
-        if key == "Left":
-                mx += 1
-        if key == "Right":
-                mx -= 1
-
+    
     canv.coords("tori", cx, cy)
     if cx == 1450:
         if cy == 850:
