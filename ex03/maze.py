@@ -22,20 +22,20 @@ def main_proc():
     global cx, cy
 
     if key == "Up" and maze_list[my-1][mx] == 0:
-            my -= 1
+        my -= 1
     if key == "Down" and maze_list[my+1][mx] == 0:
-            my += 1
+        my += 1
     if key == "Left" and maze_list[my][mx-1] == 0:
-            mx -= 1
+        mx -= 1
     if key == "Right" and maze_list[my][mx+1] == 0:
-            mx += 1
+        mx += 1
     if maze_list[my][mx] == 0:
         cx, cy = mx*100+50, my*100+50
     
     canv.coords("tori", cx, cy)
     if cx == 1450:
         if cy == 850:
-                goal()
+            goal()
     root.after(100, main_proc)
 
 
