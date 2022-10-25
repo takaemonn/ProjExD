@@ -1,3 +1,4 @@
+from turtle import right, width
 import pygame as pg
 import sys
 from random import randint
@@ -77,18 +78,14 @@ def main():
             tori_rct.centerx += 1
 
 
-        yoko, tate = check_bound(tori_rct, scrn_rct)
-        if yoko == -1:
-            if key_states[pg.K_LEFT]:
-                tori_rct.centerx += 1
-            if key_states[pg.K_RIGHT]:
-                tori_rct.centerx -= 1 
-
-        if tate == -1:
-            if key_states[pg.K_UP]:
-                tori_rct.centery += 1
-            if key_states[pg.K_DOWN]:
-                tori_rct.centery -= 1      
+        if tori_rct.right > scrn_rct.width:
+            tori_rct.right=scrn_rct.width
+        if tori_rct.left < 0:
+            tori_rct.left = 0
+        if tori_rct.top < 0:
+            tori_rct.top = 0
+        if tori_rct.bottom > scrn_rct.bottom:
+            tori_rct.bottom = scrn_rct.bottom
 
         scrn_sfc.blit(tori_sfc, tori_rct)
 
@@ -107,7 +104,7 @@ def main():
         #scrn_sfc.blit(txt, (300, 200))
         
         if tori_rct.colliderect(bomb_rct):
-            return
+           return
 
         pg.display.update()
         clock.tick(1000)
