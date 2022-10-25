@@ -3,7 +3,7 @@ import pygame as pg
 import sys
 from random import randint
 
-bnd = 10    
+bnd = 0    
 
 def check_bound(obj_rct, scr_rct):
     """
