@@ -3,25 +3,6 @@ import sys
 from random import randint
 import os
 
-main_dir = os.path.split(os.path.abspath(__file__))[0]
-
-def load_sound(file):
-    """because pygame can be be compiled without mixer."""
-    if not pg.mixer:
-        return None
-    file = os.path.join(main_dir, "data", file)
-    try:
-        sound = pg.mixer.Sound(file)
-        return sound
-    except pg.error:
-        print("Warning, unable to load, %s" % file)
-    return None
-
-
-
-
-
-
 
 def play_bgm(file):
     bgm_file = os.path.join("data", file)
